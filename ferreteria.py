@@ -1,4 +1,5 @@
-import random
+
+
 precioproducto = [
     [1, "Tornillos", 1000],
     [2, "Caja de Clavos", 1200],
@@ -17,12 +18,7 @@ comunas = [
     [2, 'Vitacura', 3990],
     [3, 'Providencia', 3990],
     [4, 'Ñuñoa', 2990],
-    [5, 'La Reina', 2990],
-    [6, 'Peñalolen', 2990],
-    [7, 'Macul', 4990],
-    [8, 'Santiago', 2990],
-    [9, 'San Miguel', 4990],
-    [10, 'San Joaquin', 4990],
+    [5, 'La Reina', 2990]
 ]
 i = 0
 
@@ -30,12 +26,41 @@ print("Sistema de Ferretaria 1.1")
 print("========================")
 print("")
 
-print("Elija el producto deseado: ")
+
 print("")
 print("\t\t\t ####*LISTA DE PRODUCTOS*####")
 print("")
 print("Producto\t\t\tCódigo\t\t\t Precio")
+print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+
 
 for x in range(0, 10):
-    print(precioproducto[x][1], "\t\t\t", precioproducto[x][0], "\t\t\t", precioproducto[x][2])
+    print(precioproducto[x][1], "\t\t\t", precioproducto[x]
+          [0], "\t\t\t", precioproducto[x][2])
     print("")
+
+
+print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+print("Selecione el producto que desea comprar ")
+
+carrito=0
+while carrito == 0:
+    codigo = int(input("Ingrese el código del producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for x in range(0, 10):
+        if codigo == precioproducto[x][0]:
+            print("")
+            print("Producto: ", precioproducto[x][1])
+            print("Cantidad: ", cantidad)
+            print("Precio: ", precioproducto[x][2] * cantidad)
+            print("")
+            confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
+            if confirmacion == "s":
+                carrito = 0
+            else:
+                carrito = 1
+                break
+
+            
+        
+   
