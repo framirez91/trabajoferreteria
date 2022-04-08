@@ -1,7 +1,6 @@
-
-
-from imaplib import Int2AP
-from socket import NI_NUMERICHOST
+from cgi import print_form
+from email.headerregistry import AddressHeader
+from functools import total_ordering
 
 
 precioproducto = [
@@ -21,7 +20,7 @@ comunas = [
     [1, 'Las Condes', 3990],
     [2, 'Vitacura', 3990],
     [3, 'Providencia', 3990],
-    [4, 'Ñuñoa', 2990],
+    [4, 'Ñuñoa     ', 2990],
     [5, 'La Reina', 2990]
 ]
 i = 0
@@ -31,26 +30,26 @@ print("========================")
 print("")
 
 
-print("")
-print("\t\t\t ####*LISTA DE PRODUCTOS*####")
-print("")
-print("Producto\t\t\tCódigo\t\t\t Precio")
-print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
 
 
-for x in range(0, 10):
-    print(precioproducto[x][1], "\t\t\t", precioproducto[x]
-          [0], "\t\t\t", precioproducto[x][2])
-    print("")
+def listado():
+  print("")
+  print("\t\t\t ####*LISTA DE PRODUCTOS*####")
+  print("")
+  print("Producto\t\t\tCódigo\t\t\t Precio")
+  print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+  for x in range(0, 10):
+   print(precioproducto[x][1], "\t\t\t", precioproducto[x]
+   [0], "\t\t\t", precioproducto[x][2])
+   print("")
+
 
 
 print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
 print("Selecione el producto que desea comprar ")
-
+listado()
 carrito=0
-subtotal = []
-
-
+total=0
 while carrito == 0:
     codigo = int(input("Ingrese el código del producto: "))
     cantidad = int(input("Ingrese la cantidad: "))
@@ -60,17 +59,52 @@ while carrito == 0:
             print("Producto: ", precioproducto[x][1])
             print("Cantidad: ", cantidad)
             print("Precio: ", precioproducto[x][2] * cantidad)
-            subtotal= precioproducto[x][2] * cantidad
             print("")
+            subtotal=precioproducto[x][2] * cantidad
+            total=total+subtotal
+           
             confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
             if confirmacion == "s":
-                carrito = 0
-               
+                listado()
+                print("tu total es",total) 
                 
-                      
+                
+                carrito = 0
             else:
                 carrito = 1
+                print('tu total final es',total)
+
                 break
+
+
+print("")
+print("\t\t\t ####*LISTA DE COMUNAS*####")
+print("")
+print("Comunas\t\t\tCódigo\t\t\t Precio")
+print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+
+for z in range(0, 5):
+    print(comunas[z][1], "\t\t\t", comunas[z]
+          [0], "\t\t\t", comunas[z][2])
+    print("")
+
+print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+print("Selecione la comuna de despacho")    
+
+
+carrito2=0
+while carrito2 == 0:
+    codigo2 = int(input("Ingrese el código de la comuna: "))
+    for x in range(0, 5):
+        if codigo2 == comunas[x][0]:
+            print("")
+            print("Comuna: ", comunas[x][1])
+            print("Precio: ", comunas[x][2])
+            print("")
+            valor3=comunas[x][2]
+            carrito2=1
+
+            print("el valor total de su compra con despacho es ", (valor3+total))    
 
             
         
