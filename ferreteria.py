@@ -1,5 +1,9 @@
 
 
+from imaplib import Int2AP
+from socket import NI_NUMERICHOST
+
+
 precioproducto = [
     [1, "Tornillos", 1000],
     [2, "Caja de Clavos", 1200],
@@ -44,6 +48,9 @@ print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
 print("Selecione el producto que desea comprar ")
 
 carrito=0
+subtotal = []
+
+
 while carrito == 0:
     codigo = int(input("Ingrese el código del producto: "))
     cantidad = int(input("Ingrese la cantidad: "))
@@ -53,10 +60,14 @@ while carrito == 0:
             print("Producto: ", precioproducto[x][1])
             print("Cantidad: ", cantidad)
             print("Precio: ", precioproducto[x][2] * cantidad)
+            subtotal= precioproducto[x][2] * cantidad
             print("")
             confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
             if confirmacion == "s":
                 carrito = 0
+               
+                
+                      
             else:
                 carrito = 1
                 break
