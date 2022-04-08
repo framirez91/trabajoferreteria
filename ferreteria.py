@@ -29,6 +29,19 @@ print("Sistema de Ferretaria 1.1")
 print("========================")
 print("")
 
+def comunaslist():
+  print("")
+  print("\t\t\t ####*LISTA DE COMUNAS*####")
+  print("")
+  print("Comunas\t\t\tCódigo\t\t\t Precio")
+  print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+  for z in range(0, 5):
+    print(comunas[z][1], "\t\t\t", comunas[z]
+          [0], "\t\t\t", comunas[z][2])
+    print("")
+
+print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+print("Selecione la comuna de despacho")
 
 
 
@@ -77,19 +90,7 @@ while carrito == 0:
                 break
 
 
-print("")
-print("\t\t\t ####*LISTA DE COMUNAS*####")
-print("")
-print("Comunas\t\t\tCódigo\t\t\t Precio")
-print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
-
-for z in range(0, 5):
-    print(comunas[z][1], "\t\t\t", comunas[z]
-          [0], "\t\t\t", comunas[z][2])
-    print("")
-
-print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
-print("Selecione la comuna de despacho")    
+comunaslist()    
 
 
 carrito2=0
