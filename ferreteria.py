@@ -64,49 +64,74 @@ listado()
 carrito=0
 total=0
 while carrito == 0:
-    codigo = int(input("Ingrese el código del producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for x in range(0, 10):
-        if codigo == precioproducto[x][0]:
-            print("")
-            print("Producto: ", precioproducto[x][1])
-            print("Cantidad: ", cantidad)
-            print("Precio: ", precioproducto[x][2] * cantidad)
-            print("")
-            subtotal=precioproducto[x][2] * cantidad
-            total=total+subtotal
+    try:
+        codigo = int(input("Ingrese el código del producto: "))
+    except: print("debe ingresar un numero")
+
+    else:
+        
+        if codigo<11 and codigo>0:
+            cantidad = int(input("Ingrese la cantidad: "))
+            for x in range(0, 10):
+                if codigo == precioproducto[x][0]:
+                    print("")
+                    print("Producto: ", precioproducto[x][1])
+                    print("Cantidad: ", cantidad)
+                    print("Precio: ", precioproducto[x][2] * cantidad)
+                    print("")
+                    subtotal=precioproducto[x][2] * cantidad
+                    total=total+subtotal
            
-            confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
-            if confirmacion == "s":
-                listado()
-                print("tu total es",total) 
+                    confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
+                    if confirmacion =="s" or confirmacion == "n" and confirmacion!=int:
+                        if confirmacion == "s":
+                            listado()
+                            print("tu total es",total) 
                 
                 
-                carrito = 0
-            else:
-                carrito = 1
-                print('tu total final es',total)
+                            carrito = 0
+                        else:
+                            carrito = 1
+                            print('tu total final es',total)
 
-                break
+                            break
+                    else:
+                        print("debe ingresar una opcion valida")
 
+                        confirmacion = input("Desea agregar otro producto? (S/N)  :  ")
+                        if confirmacion =="s" or confirmacion == "n" and confirmacion!=int:
+                            if confirmacion == "s":
+                                listado()
+                                print("tu total es",total)
+                                carrito = 0
+                            else:
+                                carrito = 1
+                                print('tu total final es',total)
+
+                                break
+                        else:
+                            print("debe ingresar una opcion valida")
+        else:
+            print('Debe ingresar un numero entre 1 y 10')
 
 comunaslist()    
-
-
 carrito2=0
 while carrito2 == 0:
-    codigo2 = int(input("Ingrese el código de la comuna: "))
-    for x in range(0, 5):
-        if codigo2 == comunas[x][0]:
-            print("")
-            print("Comuna: ", comunas[x][1])
-            print("Precio: ", comunas[x][2])
-            print("")
-            valor3=comunas[x][2]
-            carrito2=1
+    try:
+        codigo2 = int(input("Ingrese el código de la comuna: "))
+    except: print("debe ingresar un numero")
 
-            print("el valor total de su compra con despacho es ", (valor3+total))    
+    else:
+        if codigo2<6 and codigo>0:
+            for x in range(0, 5):
+                if codigo2 == comunas[x][0]:
+                    print("")
+                    print("Comuna: ", comunas[x][1])
+                    print("Precio: ", comunas[x][2])
+                    print("")
+                    valor3=comunas[x][2]
+                    carrito2=1
 
-            
-        
-   
+                    print("el valor total de su compra con despacho es ", (valor3+total))
+        else:
+                print('Debe ingresar un numero entre 1 y 5')      
